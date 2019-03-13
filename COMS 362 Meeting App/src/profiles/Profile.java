@@ -1,9 +1,7 @@
 package profiles;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,7 +10,6 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Profile {
@@ -100,7 +97,7 @@ public class Profile {
 		int response;
 		response = input.nextInt();
 		setAge(response);
-		System.out.println("You entered your age as: " +getAge() +"\n");
+		System.out.println("You entered your age as: " + getAge() +"\n");
 	}
 	
 	public void setSexPref(String input)
