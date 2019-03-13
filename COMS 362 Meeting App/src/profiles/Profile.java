@@ -19,6 +19,8 @@ public class Profile {
 
 	String my_name;
 	BufferedImage profile_picture;
+	private int age;
+	private String sexualPref;
 	
 	public Profile(){
 		
@@ -70,12 +72,67 @@ public class Profile {
 					System.out.println("The file name you specified was invalid, please try again");
 				}
 			}
+			else
+			{
+				break;
+			}
 		}
 	}
 	
 	public void remove_name(){
 		this.my_name = null;
 	}
+	
+	public void setAge(int input)
+	{
+		age = input;
+	}
+		
+	public int getAge()
+	{
+		return age;
+	}
+	
+	public void readAndSetAge()
+	{
+		System.out.println("Please enter your age below: ");
+		Scanner input = new Scanner(System.in);
+		int response;
+		response = input.nextInt();
+		setAge(response);
+		System.out.println("You entered your age as: " +getAge() +"\n");
+	}
+	
+	public void setSexPref(String input)
+	{
+		sexualPref = input;
+	}
+		
+	public String getSexPref()
+	{
+		return sexualPref;
+	}
+	
+	public void readAndSetSexualPref()
+	{
+		System.out.println("Would you like to set a Sexual Prefrence? (y/n)");
+		Scanner input = new Scanner(System.in);
+		String response;
+		response = input.next();
+		if(response.equals("y"))
+		{
+			System.out.println("Please enter your Sexual Prefrence ");
+			response = input.next();
+			setSexPref(response);
+			System.out.println("You entered " + getSexPref() + "");
+		}
+		else
+		{
+			return;
+		}
+	}
+
+	
 	
 	public void remove_profile_picture(){
 		this.profile_picture = null;
@@ -87,6 +144,8 @@ public class Profile {
 		p.set_name();
 		System.out.println(p.my_name);
 		p.set_profile_picture();
+		p.readAndSetAge();
+		p.readAndSetSexualPref();
 	}
 	
 	static class ImagePanel extends JPanel

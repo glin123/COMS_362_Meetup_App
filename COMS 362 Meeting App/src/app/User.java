@@ -10,6 +10,7 @@ public class User {
 	private String user_password;
 	private String username;
 	
+
 	//Creating a new User
 	public User(){
 		System.out.println("Please enter your email address");
@@ -109,6 +110,8 @@ public class User {
 		this.user_profile = null;
 		System.out.println("Profile successfully deleted");
 	}
+
+	
 	
 	public static void main(String[] args){
 		//Test
