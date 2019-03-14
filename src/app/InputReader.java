@@ -14,31 +14,33 @@ public class InputReader
 	
 	public boolean inputYesNoCheck(String input, String output)
 	{
-		if(input.equals("y"))
-		{
+		if(input.equals("y")) {
 			return true;
 		}
-		else if(input.equals("n"))
-		{
+		if(input.equals("n")) {
 			return false;
 		}
-		else
-		{
-			System.out.println("I'm sorry I didn't understand that.");
-			System.out.println(output);
-			inputYesNoCheck(this.readInputString(), output);
-		}
-		return false;
+
+		System.out.println("I'm sorry I didn't understand that.");
+		System.out.println(output);
+
+		return inputYesNoCheck(this.readInputString(), output);
 	}
 	
 	 public String readInputString()
 	 {
-		 return scanner.next();
+		 return scanner.nextLine();
 	 }
-	
+
 	 public int readInputInt()
 	 {
-		 return scanner.nextInt();
+		 try {
+			 return Integer.valueOf(scanner.nextLine());
+		 }
+		 catch(NumberFormatException e) {
+			 System.out.println("You did not enter a number. Try again.");
+			 return readInputInt();
+		 }
 	 }
 	 
 	 public void closeInputReader()
