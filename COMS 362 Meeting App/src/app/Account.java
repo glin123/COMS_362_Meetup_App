@@ -5,6 +5,7 @@ public class Account implements AccountInterface
 	private String username;
 	private String password;
 	private String email;
+	private Profile myProfile;
 	
 	@Override
 	public void setUsername(String input) {
@@ -36,6 +37,16 @@ public class Account implements AccountInterface
 		return email;
 	}
 
+	@Override
+	public Profile getProfile()
+	{
+		return myProfile;
+	}
 
+	@Override
+	public void setProfile(Profile newProfile)
+	{
+		myProfile = newProfile;
+	}
 
 }

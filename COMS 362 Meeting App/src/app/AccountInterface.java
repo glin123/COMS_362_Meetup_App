@@ -13,4 +13,8 @@ public interface AccountInterface
 	void setEmail(String input);
 
 	String getEmail();
+	
+	Profile getProfile();
+	
+	void setProfile(Profile newProfile);
 }

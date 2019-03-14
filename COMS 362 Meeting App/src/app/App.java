@@ -7,16 +7,18 @@ public class App
 	public static void main(String[] args) 
 	{
 		InputReader inputReader = new InputReader();
+		Account myAccount;
 		
 		System.out.println("Welcome! Would you like to create an account? (y/n)");
 		
 		if(inputReader.inputYesNoCheck(inputReader.readInputString(), "Would you like to create an account? (y/n)"))
 		{
-			//createAccout();
+			//TODO myAccount = createAccout();
 		}
 		else
 		{
 			System.out.println("No? Okay then. Have a good day!");
+			inputReader.closeInputReader();
 			System.exit(0);
 		}
 		
@@ -26,6 +28,8 @@ public class App
 		{
 			Profile myProfile = new Profile();
 			myProfile.createProfile();
+			//TODO uncomment below when createAccount() is done
+			//myAccount.setProfile(myProfile);
 		}
 		else
 		{
