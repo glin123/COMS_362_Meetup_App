@@ -158,7 +158,7 @@ public class Profile implements ProfileInterface
 				break;
 			case "done":
 				System.out.println(getProfileDetails());
-				System.out.println("\nProfile created! \n Congratulations!");
+				System.out.println("\nProfile saved.\n");
 				break;
 
 			default:
