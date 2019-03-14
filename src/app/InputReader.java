@@ -2,8 +2,7 @@ package app;
 
 import java.util.Scanner;
 
-public class InputReader 
-{
+public class InputReader {
 	private Scanner scanner;
 
 	public InputReader() 
@@ -11,9 +10,7 @@ public class InputReader
 		scanner = new Scanner(System.in);
 	}
 
-	
-	public boolean inputYesNoCheck(String input, String output)
-	{
+	public boolean inputYesNoCheck(String input, String output) {
 		if(input.equals("y")) {
 			return true;
 		}
@@ -26,14 +23,12 @@ public class InputReader
 
 		return inputYesNoCheck(this.readInputString(), output);
 	}
-	
-	 public String readInputString()
-	 {
+
+	public String readInputString() {
 		 return scanner.nextLine();
 	 }
 
-	 public int readInputInt()
-	 {
+	public int readInputInt() {
 		 try {
 			 return Integer.valueOf(scanner.nextLine());
 		 }
@@ -42,14 +37,12 @@ public class InputReader
 			 return readInputInt();
 		 }
 	 }
-	 
-	 public void closeInputReader()
-	 {
+
+	public void closeInputReader() {
 		 scanner.close();
 	 }
-	 
-	 public void openInputReader()
-	 {
+
+	public void openInputReader() {
 		 scanner = new Scanner(System.in);
 	 }
 }
