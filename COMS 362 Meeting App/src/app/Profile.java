@@ -22,6 +22,7 @@ public class Profile implements ProfileInterface
 		printOptions();
 		System.out.println("the 'done' selection will finish profile creation.");
 		editProfileHelper(inputReader.readInputString(), inputReader);
+		inputReader.closeInputReader();
 		System.out.println("Profile creation complete.");
 	}
 
