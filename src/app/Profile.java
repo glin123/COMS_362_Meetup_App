@@ -73,7 +73,7 @@ public class Profile implements ProfileInterface
 	}
 	private void editZodiacSign(){
 		System.out.print("Your current zodiac sign is:\t");
-		System.out.println(sexualPref);
+		System.out.println(zodiacSign);
 
 		String input = (InputReader.collectInput("Please enter a new zodiac sign:"));
 
@@ -111,7 +111,7 @@ public class Profile implements ProfileInterface
 
 	private void editMajor(){
 		System.out.print("Your current major is:\t");
-		System.out.println(sexualPref);
+		System.out.println(major);
 
 		String input = (InputReader.collectInput("Please enter a new major:"));
 
