@@ -1,14 +1,16 @@
 package app;
 
+import app.interfaces.ProfileInterface;
+
 public class Profile implements ProfileInterface
 {
-	String aboutMe = "none";
+	String aboutMe;
 	int age = 0;
-	String genderId = "none";
-	String sexualPref = "none";
-	String major = "none";
-	String spiritAnimal = "none";
-	String zodiac = "none";
+	String genderId;
+	String sexualPref;
+	String major;
+	String spiritAnimal;
+	String zodiac;
 	String[] options = { "aboutme", "age", "genderid", "sexualpref", "major", "spiritanimal", "zodiacsign", "done" };
 
 	@Override
@@ -171,11 +173,9 @@ public class Profile implements ProfileInterface
 		}
 	}
 
-	private void printOptions()
-	{
-		for (int i = 0; i < options.length; i++)
-		{
-			System.out.println(options[i]);
+	private void printOptions() {
+		for(String option : options) {
+			System.out.println(option);
 		}
 	}
 
@@ -188,15 +188,13 @@ public class Profile implements ProfileInterface
 	@Override
 	public String getProfileDetails()
 	{
-		String profileDetails = "About Me: " + getAboutMe() +
-								"\nAge: " + getAge() +
-								"\nGender Identity: " + getGenderId() +
-								"\nSexual Preference: " + getSexualPref() +
-								"\nMajor: " + getMajor() +
-								"\nSpirit Animal: " + getSpiritAnimal() +
-								"\nZodiac Sign: " + getZodiac();
-
-		return profileDetails;
+		return "About Me: " + getAboutMe() +
+				"\nAge: " + getAge() +
+				"\nGender Identity: " + getGenderId() +
+				"\nSexual Preference: " + getSexualPref() +
+				"\nMajor: " + getMajor() +
+				"\nSpirit Animal: " + getSpiritAnimal() +
+				"\nZodiac Sign: " + getZodiac();
 	}
 
 	@Override
