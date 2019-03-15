@@ -17,9 +17,7 @@ public class InputReader {
 
 	/**
 	 * Displays the prompt and then takes user input
-	 *
 	 * @param prompt
-	 *
 	 * @return
 	 */
 	public static String collectInput(String prompt) {
@@ -33,9 +31,7 @@ public class InputReader {
 	 * Returns true if user enters string containing y,
 	 * Returns false if user enters string containing n,
 	 * Returns true if user enters string containing y and n
-	 *
 	 * @param prompt
-	 *
 	 * @return
 	 */
 	public static boolean inputYesNo(String prompt) {
@@ -56,9 +52,7 @@ public class InputReader {
 
 	/**
 	 * Displays the prompt and takes integer input.
-	 *
 	 * @param prompt
-	 *
 	 * @return
 	 */
 	public static int readInputInt(String prompt) {
@@ -67,8 +61,7 @@ public class InputReader {
 
 		try {
 			return Integer.parseInt(input.trim());
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			System.out.println("That was not a number.");
 			return readInputInt(prompt);
 		}
@@ -77,10 +70,8 @@ public class InputReader {
 	/**
 	 * Displays the prompt and enumerates the provided options
 	 * Returns the string value of the option selected by user.
-	 *
 	 * @param prompt
 	 * @param options
-	 *
 	 * @return
 	 */
 	public static String readFromOptions(String prompt, String[] options) {
@@ -117,8 +108,9 @@ public class InputReader {
 		}
 	}
 
-	public static boolean requestConfirmation(Object input) {
-		return InputReader.inputYesNo(String.format("You enterd: \"%s\"\n\tConfirm?", input.toString()));
+	public static boolean requestConfirmation(Object input){
+		return InputReader.inputYesNo(String.format("You enterd: \n\t%s\nConfirm?",
+                input.toString().replaceAll("\n","\n\t")));
 	}
 
 	public static boolean requestCancel() {

@@ -16,19 +16,29 @@ public class Profile implements ProfileInterface
 	@Override
 	public void createProfile()
 	{
-		InputReader inputReader = new InputReader();
 
 		System.out.println("Time to create your profile!");
-		System.out.println("What would you like to edit? To edit, type one of the following options: ");
 
-		printOptions();
-		System.out.println("the 'done' selection will finish profile creation.");
-		editProfileHelper(inputReader.readInputString(), inputReader);
-		inputReader.closeInputReader();
+		boolean editProf = true;
+		while(editProf){
+			editProfileFields();
+
+			boolean confirm = InputReader.requestConfirmation(this);
+			if(confirm){
+				//TODO push changes to database
+				System.out.println("Profile confirmed.");
+				editProf = false;
+			}
+		}
 		System.out.println("Profile creation complete.");
 	}
 
-	public void editProfileFields() {
+	public static void main(String[] args){
+		Profile p = new Profile();
+		p.createProfile();
+	}
+
+	public void editProfileFields(){
 		boolean edit = true;
 		while(edit) {
 			String option = InputReader.readFromOptions("Which field would you like to edit?", options);
@@ -47,17 +57,91 @@ public class Profile implements ProfileInterface
 					editGenderId();
 					break;
 				case "sexualPref":
-					//TODO editSexPref();
+					editSexPref();
 					break;
 				case "major":
-					//TODO //editMajor();
+					editMajor();
 					break;
 				case "spiritAnimal":
-					//TODO editSpiritAnimal();
+					editSpiritAnimal();
 					break;
 				case "zodiacSign":
-					//TODO editZodiacSign();
+					editZodiacSign();
 					break;
+			}
+		}
+	}
+	private void editZodiacSign(){
+		System.out.print("Your current zodiac sign is:\t");
+		System.out.println(sexualPref);
+
+		String input = (InputReader.collectInput("Please enter a new zodiac sign:"));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setZodiac(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editZodiacSign();
+			}
+		}
+	}
+
+	private void editSpiritAnimal(){
+		System.out.print("Your current spirit animal is:\t");
+		System.out.println(sexualPref);
+
+		String input = (InputReader.collectInput("Please enter a new spirit animal:"));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setSpiritAnimal(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editSpiritAnimal();
+			}
+		}
+	}
+
+	private void editMajor(){
+		System.out.print("Your current major is:\t");
+		System.out.println(sexualPref);
+
+		String input = (InputReader.collectInput("Please enter a new major:"));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setMajor(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editMajor();
+			}
+		}
+	}
+
+	private void editSexPref(){
+		System.out.print("Your current sexual preference is:\t");
+		System.out.println(sexualPref);
+		String input = (InputReader.collectInput("Please enter a new sexual preference:"));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setSexualPref(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editSexPref();
 			}
 		}
 	}
@@ -375,5 +459,18 @@ public class Profile implements ProfileInterface
 	public String getZodiac()
 	{
 		return zodiacSign;
+	}
+
+	@Override
+	public String toString(){
+		String profileDetails = "About Me: " + getAboutMe() +
+				"\nAge: " + getAge() +
+				"\nGender Identity: " + getGenderId() +
+				"\nSexual Preference: " + getSexualPref() +
+				"\nMajor: " + getMajor() +
+				"\nSpirit Animal: " + getSpiritAnimal() +
+				"\nZodiac Sign: " + getZodiac();
+
+		return profileDetails;
 	}
 }
