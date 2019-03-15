@@ -1,5 +1,7 @@
 package app;
 
+import java.lang.reflect.Field;
+
 public class Profile implements ProfileInterface
 {
 	String aboutMe = "none";
@@ -8,8 +10,8 @@ public class Profile implements ProfileInterface
 	String sexualPref = "none";
 	String major = "none";
 	String spiritAnimal = "none";
-	String zodiac = "none";
-	String[] options = { "aboutme", "age", "genderid", "sexualpref", "major", "spiritanimal", "zodiacsign", "done" };
+	String zodiacSign = "none";
+	String[] options = { "aboutMe", "age", "genderId", "sexualPref", "major", "spiritAnimal", "zodiacSign", "done" };
 
 	@Override
 	public void createProfile()
@@ -25,6 +27,96 @@ public class Profile implements ProfileInterface
 		inputReader.closeInputReader();
 		System.out.println("Profile creation complete.");
 	}
+
+	public void editProfileFields(){
+		boolean edit = true;
+		while(edit){
+			String option = InputReader.readFromOptions("Which field would you like to edit?",options);
+
+			switch (option){
+				case "done":
+					edit = false;
+					break;
+				case "aboutMe":
+					editAboutMe();
+					break;
+				case "age":
+					editAge();
+					break;
+				case "genderId":
+					editGenderId();
+					break;
+				case "sexualPref":
+					//TODO editSexPref();
+					break;
+				case "major":
+					//TODO //editMajor();
+					break;
+				case "spiritAnimal":
+					//TODO editSpiritAnimal();
+					break;
+				case "zodiacSign":
+					//TODO editZodiacSign();
+					break;
+			}
+		}
+	}
+
+	private void editAboutMe(){
+		System.out.println("Your current 'About Me' section is:");
+		System.out.println(aboutMe);
+		String input = (InputReader.collectInput("Please describe yourself."));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setAboutMe(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editAboutMe();
+			}
+		}
+	}
+
+	private void editGenderId(){
+		System.out.print("Your current gender identity is:\t");
+		System.out.println(genderId);
+		String input = (InputReader.collectInput("Please enter a new gender identity:"));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setGenderId(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editGenderId();
+			}
+		}
+	}
+
+	private void editAge(){
+		System.out.print("Your current age is:\t");
+		System.out.println(genderId);
+		int input = (InputReader.readInputInt("Please enter a age:"));
+
+		boolean  confirm = InputReader.requestConfirmation(input);
+		if(confirm){
+			setAge(input);
+		}else{
+			boolean cancel = InputReader.requestCancel();
+			if(cancel){
+				return;
+			}else{
+				editAge();
+			}
+		}
+	}
+
+
 
 	private void editProfileHelper(String option, InputReader inputReader)
 	{
@@ -274,12 +366,12 @@ public class Profile implements ProfileInterface
 	@Override
 	public void setZodiac(String input)
 	{
-		zodiac = input;
+		zodiacSign = input;
 	}
 
 	@Override
 	public String getZodiac()
 	{
-		return zodiac;
+		return zodiacSign;
 	}
 }
